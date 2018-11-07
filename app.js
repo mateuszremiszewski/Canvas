@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Tworzenie canvas zapisanie do zmiennej
     const myCanvas = document.createElement('canvas');
-    myCanvas.width = 500;
-    myCanvas.height = 500;
+    myCanvas.width = 800;
+    myCanvas.height = 800;
 
     // Dodanie elementu do body
     document.body.appendChild(myCanvas);
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx.fill();
 
     //ZMIANA KOLORU
-    //Można kolor określić w HEX, RGB, RGBA(z przezroczystoscia)
+    //Można kolor określić w HEX, RGB, RGBA(z przezroczystoscia), kolory predefiniowane
     ctx.fillStyle = "#c23c3c";
     ctx.fillRect(10,400,50,50);
 
@@ -103,5 +103,45 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx.fillStyle = "rgba(255,0,0,0.5)";
     ctx.fillRect(130,400,50,50);
 
+    ctx.fillStyle = "pink";
+    ctx.fillRect(190,400,50,50);
+
+    //Można zmienić też kolor samego kontura
+    ctx.strokeStyle = 'red';
+    ctx.strokeRect(250,400,50,50);
+
+    //Zmiana przezroczystości wszystkich elementów
+
+    ctx.globalAlpha = 0.7; // domyslnie 1
+    ctx.fillStyle = 'black';
+    ctx.fillRect(310,400,50,50);
+
+    //Powrót do przezroczystosci = 1
+    //Wszystko pomiędzy takimi zapisami będzie miało transparentność określoną w pierwszym zapisie
+
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = 'black';
+    ctx.fillRect(370,400,50,50);
+
+    //STYLE LINII
+
+    //Grubość lini
+    ctx.lineWidth = 10; // domyślnie 1
+    ctx.strokeRect(10, 470, 50, 50); //domyslnie border jest normalny
+
+    ctx.lineJoin = 'round'; // zmiana bordera na zaokrąglony
+    ctx.strokeRect(90, 470, 50, 50);
+
+    //GRADIENTY
+    //(parametr pierwszego punktu gdzie ma się zaczynac gradient, punkt gdzie gradient ma sie konczyc)
+    //To warunkuje wygląd gradientu oś po której przebiega gradient
+    const myGradient = ctx.createLinearGradient(300,600,100,800);
+    //wyznaczanie kolorów gradientu (w który miejscu ma zacząć się wiaderko,)
+    myGradient.addColorStop(0,"#dcf225");
+    myGradient.addColorStop(0.32,"#0ce0ff");
+    myGradient.addColorStop(1,"#ff4992");
+
+    ctx.fillStyle = myGradient;
+    ctx.fillRect(0,600,600,800);
 
 });
