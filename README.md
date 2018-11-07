@@ -1,2 +1,2 @@
-# jsGame
-Canvas JS game
+# Canvas JS notes
+Canvas JS basic notes
